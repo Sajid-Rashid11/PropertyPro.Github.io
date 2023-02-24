@@ -1,0 +1,15 @@
+{
+  "name": "property_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sign_in.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.17.1"
+  }
+}

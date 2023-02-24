@@ -5,8 +5,10 @@
     }
     body {
         background-image: url("property.jpg");
+        padding: auto;
         background-repeat: no-repeat;
         background-size: cover;
+        background-attachment: fixed;
         color: whitesmoke;
         font-family: 'Gloock', serif;
 

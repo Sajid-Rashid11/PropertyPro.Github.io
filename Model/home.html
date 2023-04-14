@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link
+    href="https://fonts.googleapis.com/css2?family=Gloock&family=Lato:ital,wght@1,100;1,400&family=Poppins&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/View/home_style.css">
+    <title>PropertyPro-HomePage</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logoAndnum">
+      <img src="/View/logo.png" alt="logo">
+      <span class="phone">017-6969-420</span>
+    </div>
+    <ul class="nav_links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </nav>
+  <div class="image-container"></div>
+  <h1 id="heading">Search for properties to be sold or rented here</h1><br>
+  <div class="info">
+      
+
+    <div class="info_header">
+      <div id="buy_rent">Buy or Rent</div>
+      <div id="sell_rent">Sell or Rent out</div>
+    </div>
+
+    <form method="GET" id="property_search">
+      
+        <div class="select">
+            <select name="type" class="filter-type">
+                <option value="rent">Rent</option>
+                <option value="buy">Buy</option>
+            </select>
+            <input type="text" id="location" placeholder="Enter location">
+            <input type="number" id="bed" min="0" placeholder="No. of bedrooms">
+            <input type="number" id="bath" min="0" placeholder="No. of bathrooms">
+            
+            <div class="flat_size">
+              <input type="text" pattern="[0-9]+" name="min_size" id="min_size" placeholder="minimum size" value>
+              <input type="text" pattern="[0-9]+" name="max_size" id="max_size" placeholder="maximum size">
+            </div>
+            <div class="price_range">
+              <input type="text" pattern="[0-9]+" name="min_price" id="min_price" placeholder="minimum price">
+              <input type="text" pattern="[0-9]+" name="max_price" id="max_price" placeholder="maximum price">
+            </div>
+              <button type="submit" class="search_btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
+
+        </div>
+    </form>
+
+    <div id='upload' class="upload">
+          <select name="type" class="filter-type">
+            <option value="rent_out">Rent Out</option>
+            <option value="sell">Sell</option>
+        </select>
+        <input type="text" id="loc" placeholder="location">
+        <input type="number"  id="bed_count" placeholder="No. of bedrooms">
+        <input type="text" pattern='[0-9]+' id="price" name="price" placeholder="Enter price"><br>
+        <input type="number" id="balcony_count" placeholder="No. of balcony">
+        <input type="number" id="bath_count" placeholder="No. of bathrooms">
+        <input type="number" name="floor" id="floor" placeholder="enter floor number"><br>
+        <input type="text" pattern="[0-9]+" id="size" placeholder="enter flat size">
+        <input type="text" name="description" placeholder="Enter flat description">
+        <input type="file" name="picture" id="picture" placeholder="pictures"><br>
+        <input type="text" name="address" id="address" placeholder="enter address">
+        <button type="submit" id="info_upload">Upload<i class="fa-solid fa-upload"></i></button>
+        </div>
+    </div>
+    
+</body>
+<script src="/Controller/home.js"></script>
+</html>

@@ -42,7 +42,7 @@
       <div id="sell_rent">Sell or Rent out</div>
     </div>
 
-    <form method="GET" id="property_search">
+    <div id="property_search">
       
         <div class="select">
             <select name="type" class="search_filter-type">
@@ -64,7 +64,7 @@
               <button type="submit" id="search_btn" class="search_btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
 
         </div>
-    </form>
+      </div>
 
     <div id='upload' class="upload">
           <select name="type" class="upload_filter-type">
@@ -81,7 +81,7 @@
         <input type="text" name="description" placeholder="Enter flat description">
         <input type="file" name="picture" id="picture" placeholder="pictures"><br>
         <input type="text" name="address" id="address" placeholder="enter address">
-        <button type="submit" id="info_upload">Upload<i class="fa-solid fa-upload"></i></button>
+        <button  id="info_upload" type="submit" class="info_upload">Upload<i class="fa-solid fa-upload"></i></button>
         </div>
     </div>
     
@@ -110,23 +110,24 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
 
-      import {getDatabase, set, get, update, remove, ref, child} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js"
+      import {getDatabase, ref, get, set, child, update, remove} 
+      from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js"
 
       const db= getDatabase();
       
       //information for upload
       var upload=document.querySelector('.upload_filter-type') 
-      var loc=document.getElementById('loc');
-      var bed_count=document.getElementById('bed_count')
-      var price=document.getElementById('price')
-      var balcony_count=document.getElementById('balcony_count')
-      var bath_count=document.getElementById('bath_count')
-      var floor=document.getElementById('floor')
-      var size=document.getElementById('size')
-      var description=document.getElementById('description')
-      var picture=document.getElementById('picture')
-      var address=document.getElementById('address')
-      var upload=document.getElementById('info_upload')
+      var enterloc=document.getElementById('loc');
+      var enterbed_count=document.getElementById('bed_count')
+      var enterprice=document.getElementById('price')
+      var enterbalcony_count=document.getElementById('balcony_count')
+      var enterbath_count=document.getElementById('bath_count')
+      var enterfloor=document.getElementById('floor')
+      var entersize=document.getElementById('size')
+      var enterdescription=document.getElementById('description')
+      var enterpicture=document.getElementById('picture')
+      var enteraddress=document.getElementById('address')
+      const upload_btn=document.getElementById('info_upload')
 
       //information to search
       var search=document.querySelector('.search_filter-type')
@@ -139,12 +140,38 @@
       var max_price=document.getElementById('max_price')
       var search_btn=document.getElementById('search_btn')
 
+      function insertData() {
+        set(ref(db, "Property"+enteraddress.value ), {
+          upload_type: upload.value,
+          loc: enterloc.value,
+          bed_count: enterbed_count.value,
+          balcony_count: enterbalcony_count.value,
+          price: enterprice.value,
+          floor: enterfloor.value,
+          bath_count: enterbath_count.value,
+          size: entersize.value,
+          description: enterdescription.value,
+          address: enteraddress.value
+        })
+        .then(()=> {
+          alert('Upload successful!')
+        })
+        .catch((error)=> {
+          alert(error)
+        }) 
+      }
 
+      function findData() {
 
+      }
 
+      function updateData() {
 
+      }
 
-      
+      upload_btn.addEventListener('click', insertData);
+      search_btn.addEventListener('click', findData);
+
     </script>
 </body>
 <script src="/Controller/home.js"></script>

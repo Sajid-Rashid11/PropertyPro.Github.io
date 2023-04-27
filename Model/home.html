@@ -18,6 +18,7 @@
     />
     <link rel="stylesheet" href="/View/home_style.css">
     <title>PropertyPro-HomePage</title>
+    <link rel="icon" href="/View/logo.png" type="image/icon type">
 </head>
 <body>
   <nav class="navbar">
@@ -44,7 +45,7 @@
     <form method="GET" id="property_search">
       
         <div class="select">
-            <select name="type" class="filter-type">
+            <select name="type" class="search_filter-type">
                 <option value="rent">Rent</option>
                 <option value="buy">Buy</option>
             </select>
@@ -60,13 +61,13 @@
               <input type="text" pattern="[0-9]+" name="min_price" id="min_price" placeholder="minimum price">
               <input type="text" pattern="[0-9]+" name="max_price" id="max_price" placeholder="maximum price">
             </div>
-              <button type="submit" class="search_btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
+              <button type="submit" id="search_btn" class="search_btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
 
         </div>
     </form>
 
     <div id='upload' class="upload">
-          <select name="type" class="filter-type">
+          <select name="type" class="upload_filter-type">
             <option value="rent_out">Rent Out</option>
             <option value="sell">Sell</option>
         </select>
@@ -84,6 +85,67 @@
         </div>
     </div>
     
+    
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDErQuY9Ss7afLcjrBFdfnTc6_Zxro2FkM",
+        authDomain: "propertypro-e6dd2.firebaseapp.com",
+        databaseURL: "https://propertypro-e6dd2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "propertypro-e6dd2",
+        storageBucket: "propertypro-e6dd2.appspot.com",
+        messagingSenderId: "596423351613",
+        appId: "1:596423351613:web:e5e65d072cbf6f7e633954",
+        measurementId: "G-86MKPJWQNF"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      import {getDatabase, set, get, update, remove, ref, child} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js"
+
+      const db= getDatabase();
+      
+      //information for upload
+      var upload=document.querySelector('.upload_filter-type') 
+      var loc=document.getElementById('loc');
+      var bed_count=document.getElementById('bed_count')
+      var price=document.getElementById('price')
+      var balcony_count=document.getElementById('balcony_count')
+      var bath_count=document.getElementById('bath_count')
+      var floor=document.getElementById('floor')
+      var size=document.getElementById('size')
+      var description=document.getElementById('description')
+      var picture=document.getElementById('picture')
+      var address=document.getElementById('address')
+      var upload=document.getElementById('info_upload')
+
+      //information to search
+      var search=document.querySelector('.search_filter-type')
+      var location=document.getElementById('location');
+      var bed=document.getElementById('bed')
+      var bath=document.getElementById('bath')
+      var min_size=document.getElementById('min_size')
+      var max_size=document.getElementById('max_size')
+      var min_price=document.getElementById('min_price')
+      var max_price=document.getElementById('max_price')
+      var search_btn=document.getElementById('search_btn')
+
+
+
+
+
+
+      
+    </script>
 </body>
 <script src="/Controller/home.js"></script>
 </html>

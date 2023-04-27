@@ -16,7 +16,7 @@ body{
 .navbar{
     background-color: rgb(45, 45, 45);
     overflow: hidden;
-    padding: auto;
+    padding: 0;
 }
 
 .nav_links {

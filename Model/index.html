@@ -123,6 +123,7 @@
           .then((userCredential) => {
             const user = userCredential.user;
             alert("Your account has been created!");
+            window.location.href = "home.html";
           })
           .catch((error) => {
             const errorCode = error.code;

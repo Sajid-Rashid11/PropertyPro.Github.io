@@ -251,6 +251,7 @@
         get(child(dbref, "property/")).then((snapshot) => {
           results.push(snapshot.val());
           alert("search done");
+          window.location.href = "showcards.html";
           // Iterate through the results array
           results.forEach((result) => {
             // Perform actions on each result
@@ -280,19 +281,20 @@
               }
             }
 
-            console.log(matching_results);
+            localStorage.clear()
             localStorage.setItem(
               "matching data",
               JSON.stringify(matching_results)
             );
           });
         });
+        
       }
 
       uploadBtn.addEventListener("click", insertData);
       search_Btn.addEventListener("click", function () {
         findData();
-        window.location.href = "./showcards.html";
+        
       });
     </script>
   </body>

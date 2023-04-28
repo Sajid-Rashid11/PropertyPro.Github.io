@@ -48,22 +48,22 @@
             <select name="type" class="search_filter-type">
                 <option value="rent">Rent</option>
                 <option value="buy">Buy</option>
-            </select>
+            </select></div>
             <input type="text" id="location" placeholder="Enter location">
             <input type="number" id="bed" min="0" placeholder="No. of bedrooms">
             <input type="number" id="bath" min="0" placeholder="No. of bathrooms">
             
             <div class="flat_size">
-              <input type="text" pattern="[0-9]+" name="min_size" id="min_size" placeholder="minimum size" value>
-              <input type="text" pattern="[0-9]+" name="max_size" id="max_size" placeholder="maximum size">
+              <input type="number"  name="min_size" id="min_size" placeholder="minimum size">
+              <input type="number"  name="max_size" id="max_size" placeholder="maximum size">
             </div>
             <div class="price_range">
-              <input type="text" pattern="[0-9]+" name="min_price" id="min_price" placeholder="minimum price">
-              <input type="text" pattern="[0-9]+" name="max_price" id="max_price" placeholder="maximum price">
+              <input type="number"  name="min_price" id="min_price" placeholder="minimum price">
+              <input type="number"  name="max_price" id="max_price" placeholder="maximum price">
             </div>
               <button type="submit" id="search_btn" class="search_btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
 
-        </div>
+        
       </div>
 
     <div id='upload' class="upload">
@@ -74,11 +74,11 @@
         <input type="text" id="loc" placeholder="location">
         <input type="number"  id="bed_count" placeholder="No. of bedrooms">
         <input type="text" pattern='[0-9]+' id="price" name="price" placeholder="Enter price"><br>
-        <input type="number" id="balcony_count" placeholder="No. of balcony">
-        <input type="number" id="bath_count" placeholder="No. of bathrooms">
+        <input type="number" name="balcony_count" id="balcony_count" placeholder="No. of balcony">
+        <input type="number" name="bath_count" id="bath_count" placeholder="No. of bathrooms">
         <input type="number" name="floor" id="floor" placeholder="enter floor number"><br>
-        <input type="text" pattern="[0-9]+" id="size" placeholder="enter flat size">
-        <input type="text" name="description" placeholder="Enter flat description">
+        <input type="text" name="size" pattern="[0-9]+" id="size" placeholder="enter flat size">
+        <input type="text" name="description" id="description" placeholder="Enter flat description">
         <input type="file" name="picture" id="picture" placeholder="pictures"><br>
         <input type="text" name="address" id="address" placeholder="enter address">
         <button  id="info_upload" type="submit" class="info_upload">Upload<i class="fa-solid fa-upload"></i></button>
@@ -90,6 +90,9 @@
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
+      import { getDatabase, set, get, update, remove, ref, child } 
+      from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
     
@@ -109,68 +112,63 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
-
-      import {getDatabase, ref, get, set, child, update, remove} 
-      from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js"
-
-      const db= getDatabase();
+      const db = getDatabase();
       
-      //information for upload
-      var upload=document.querySelector('.upload_filter-type') 
-      var enterloc=document.getElementById('loc');
-      var enterbed_count=document.getElementById('bed_count')
-      var enterprice=document.getElementById('price')
-      var enterbalcony_count=document.getElementById('balcony_count')
-      var enterbath_count=document.getElementById('bath_count')
-      var enterfloor=document.getElementById('floor')
-      var entersize=document.getElementById('size')
-      var enterdescription=document.getElementById('description')
-      var enterpicture=document.getElementById('picture')
-      var enteraddress=document.getElementById('address')
-      const upload_btn=document.getElementById('info_upload')
+      //upload information to db
+      const upload=document.querySelector('.upload_filter-type');
+      const enterloc= document.getElementById('loc');
+      const enterbed_count= document.getElementById('bed_count');
+      const enterbalcony_count= document.getElementById('balcony_count');
+      const enterbath_count= document.getElementById('bath_count');
+      const enterfloor= document.getElementById('floor');
+      const entersize= document.getElementById('size');
+      const enterdescription= document.getElementById('description');
+      const enteraddress= document.getElementById('address');
+      const enterprice= document.getElementById('price');
+      const uploadBtn= document.getElementById('info_upload');
 
-      //information to search
-      var search=document.querySelector('.search_filter-type')
-      var location=document.getElementById('location');
-      var bed=document.getElementById('bed')
-      var bath=document.getElementById('bath')
-      var min_size=document.getElementById('min_size')
-      var max_size=document.getElementById('max_size')
-      var min_price=document.getElementById('min_price')
-      var max_price=document.getElementById('max_price')
-      var search_btn=document.getElementById('search_btn')
+      //search infromation from db
+      const search_type=document.querySelector('.search_filter-type').value;
+      const search_loc= document.getElementById('location').value;
+      const search_bed= document.getElementById('bed').value;
+      const search_bath= document.getElementById('bath').value;
+      const search_min_size= document.getElementById('min_size').value;
+      const search_max_size= document.getElementById('max_size').value;
+      const search_min_price= document.getElementById('min_price').value;
+      const search_max_price= document.getElementById('max_price').value;
+      const search_Btn= document.getElementById('search_btn');
 
       function insertData() {
-        set(ref(db, "Property"+enteraddress.value ), {
-          upload_type: upload.value,
-          loc: enterloc.value,
-          bed_count: enterbed_count.value,
-          balcony_count: enterbalcony_count.value,
-          price: enterprice.value,
+        set(ref(db, "property/" + enteraddress.value),{
+          type: upload.value,
+          location: enterloc.value,
+          address: enteraddress.value,
           floor: enterfloor.value,
-          bath_count: enterbath_count.value,
           size: entersize.value,
-          description: enterdescription.value,
-          address: enteraddress.value
+          price: enterprice.value,
+          bed: enterbed_count.value,
+          bath: enterbath_count.value,
+          balcony: enterbalcony_count.value,
+          description: enterdescription.value
         })
-        .then(()=> {
-          alert('Upload successful!')
+        .then(()=>{
+          alert('Upload successful')
         })
-        .catch((error)=> {
+        .catch((error)=>{
           alert(error)
-        }) 
+        });
       }
 
-      function findData() {
+      function findData(){
+        const dbref = ref(db);
+        results=[]
+        data= get(child(dbref, "property/"+search_loc+search_bath+search_bed+search_type))
 
+        
       }
 
-      function updateData() {
-
-      }
-
-      upload_btn.addEventListener('click', insertData);
-      search_btn.addEventListener('click', findData);
+      uploadBtn.addEventListener('click', insertData);
+      search_Btn.addEventListener('click', findData);
 
     </script>
 </body>

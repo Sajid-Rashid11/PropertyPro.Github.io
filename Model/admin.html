@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin page</title>
-    <link rel="stylesheet" href="/View/admin_style.css">
-    <link rel="icon" href="/View/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="../View/admin_style.css">
+    <link rel="icon" href="../View/logo.png" type="image/icon type">
 
 </head>
 <body>
@@ -28,7 +28,7 @@
             <th>Balcony</th>
             <th>Price</th>
             <th>Approval</th>
-            <th>Column 10</th>
+            <th>Change Approval</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -92,8 +92,10 @@ get(child(dbref, "property/"))
     console.error(error);
   });
 
+  
+
 
     </script>
 </body>
-<script src="/Controller/admin.js"></script>
+<script src="../Controller/admin.js"></script>
 </html>

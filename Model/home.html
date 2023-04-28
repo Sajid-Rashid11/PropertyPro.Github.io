@@ -1,145 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-    href="https://fonts.googleapis.com/css2?family=Gloock&family=Lato:ital,wght@1,100;1,400&family=Poppins&display=swap"
-    rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+      href="https://fonts.googleapis.com/css2?family=Gloock&family=Lato:ital,wght@1,100;1,400&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../View/home_style.css">
+    <link rel="stylesheet" href="../View/home_style.css" />
     <title>PropertyPro-HomePage</title>
-    <link rel="icon" href="../View/logo.png" type="image/icon type">
-</head>
-<body>
-  <nav class="navbar">
-    <div class="logoAndnum">
-      <img src="/View/logo.png" alt="logo">
-      <span class="phone">017-6969-420</span>
-    </div>
-    <ul class="nav_links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Support</a></li>
-    </ul>
-  </nav>
-  <div class="image-container"></div>
-  <h1 id="heading">Search for properties to be sold or rented here</h1><br>
-  <div class="info">
-      
-
-    <div class="info_header">
-      <div id="buy_rent">Buy or Rent</div>
-      <div id="sell_rent">Sell or Rent out</div>
-    </div>
-
-    <div id="property_search">
-      
-        <div class="select">
-            <select name="type" class="search_filter-type">
-                <option value="rent">Rent</option>
-                <option value="buy">Buy</option>
-            </select></div>
-            <input type="text" id="location" placeholder="Enter location">
-            <input type="number" id="bed" min="0" placeholder="No. of bedrooms">
-            <input type="number" id="bath" min="0" placeholder="No. of bathrooms">
-            
-            <div class="flat_size">
-              <input type="number"  name="min_size" id="min_size" placeholder="minimum size">
-              <input type="number"  name="max_size" id="max_size" placeholder="maximum size">
-            </div>
-            <div class="price_range">
-              <input type="number"  name="min_price" id="min_price" placeholder="minimum price">
-              <input type="number"  name="max_price" id="max_price" placeholder="maximum price">
-            </div>
-              <button type="submit" id="search_btn" class="search_btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
-
-        
+    <link rel="icon" href="/View/logo.png" type="image/icon type" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logoAndnum">
+        <img src="/View/logo.png" alt="logo" />
+        <span class="phone">017-6969-420</span>
+      </div>
+      <ul class="nav_links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </nav>
+    <div class="image-container"></div>
+    <h1 id="heading">Search for properties to be sold or rented here</h1>
+    <br />
+    <div class="info">
+      <div class="info_header">
+        <div id="buy_rent">Buy or Rent</div>
+        <div id="sell_rent">Sell or Rent out</div>
       </div>
 
-    <div id='upload' class="upload">
-          <select name="type" class="upload_filter-type">
-            <option value="rent_out">Rent Out</option>
-            <option value="sell">Sell</option>
-        </select>
-        <input type="text" id="loc" placeholder="location">
-        <input type="number"  id="bed_count" placeholder="No. of bedrooms">
-        <input type="text" pattern='[0-9]+' id="price" name="price" placeholder="Enter price"><br>
-        <input type="number" name="balcony_count" id="balcony_count" placeholder="No. of balcony">
-        <input type="number" name="bath_count" id="bath_count" placeholder="No. of bathrooms">
-        <input type="number" name="floor" id="floor" placeholder="enter floor number"><br>
-        <input type="text" name="size" pattern="[0-9]+" id="size" placeholder="enter flat size">
-        <input type="text" name="description" id="description" placeholder="Enter flat description">
-        <input type="file" name="picture" id="picture" placeholder="pictures"><br>
-        <input type="text" name="address" id="address" placeholder="enter address">
-        <button  id="info_upload" type="submit" class="info_upload">Upload<i class="fa-solid fa-upload"></i></button>
+      <div id="property_search">
+        <div class="select">
+          <select name="type" class="search_filter-type">
+            <option value="rent">Rent</option>
+            <option value="buy">Buy</option>
+          </select>
         </div>
+        <input type="text" id="location" placeholder="Enter location" />
+        <input type="number" id="bed" min="0" placeholder="No. of bedrooms" />
+        <input type="number" id="bath" min="0" placeholder="No. of bathrooms" />
+
+        <div class="flat_size">
+          <input
+            type="number"
+            name="min_size"
+            id="min_size"
+            placeholder="minimum size"
+          />
+          <input
+            type="number"
+            name="max_size"
+            id="max_size"
+            placeholder="maximum size"
+          />
+        </div>
+        <div class="price_range">
+          <input
+            type="number"
+            name="min_price"
+            id="min_price"
+            placeholder="minimum price"
+          />
+          <input
+            type="number"
+            name="max_price"
+            id="max_price"
+            placeholder="maximum price"
+          />
+        </div>
+        <button type="submit" id="search_btn" class="search_btn">
+          Search<i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <div id="upload" class="upload">
+        <select name="type" class="upload_filter-type">
+          <option value="rent_out">Rent Out</option>
+          <option value="sell">Sell</option>
+        </select>
+        <input type="text" id="loc" placeholder="location" />
+        <input type="number" id="bed_count" placeholder="No. of bedrooms" />
+        <input
+          type="text"
+          pattern="[0-9]+"
+          id="price"
+          name="price"
+          placeholder="Enter price"
+        /><br />
+        <input
+          type="number"
+          name="balcony_count"
+          id="balcony_count"
+          placeholder="No. of balcony"
+        />
+        <input
+          type="number"
+          name="bath_count"
+          id="bath_count"
+          placeholder="No. of bathrooms"
+        />
+        <input
+          type="number"
+          name="floor"
+          id="floor"
+          placeholder="enter floor number"
+        /><br />
+        <input
+          type="text"
+          name="size"
+          pattern="[0-9]+"
+          id="size"
+          placeholder="enter flat size"
+        />
+        <input
+          type="text"
+          name="description"
+          id="description"
+          placeholder="Enter flat description"
+        />
+        <input
+          type="file"
+          name="picture"
+          id="picture"
+          placeholder="pictures"
+        /><br />
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="enter address"
+        />
+        <input
+          type="number"
+          name="phone_num"
+          id="phn_num"
+          placeholder="enter Phone no."
+        />
+        <button id="info_upload" type="submit" class="info_upload">
+          Upload<i class="fa-solid fa-upload"></i>
+        </button>
+      </div>
     </div>
-    
-    
+
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
-      import { getDatabase, set, get, update, remove, ref, child } 
-      from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+      import {
+        getDatabase,
+        set,
+        get,
+        update,
+        remove,
+        ref,
+        child,
+      } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
 
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
-    
+
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
         apiKey: "AIzaSyDErQuY9Ss7afLcjrBFdfnTc6_Zxro2FkM",
         authDomain: "propertypro-e6dd2.firebaseapp.com",
-        databaseURL: "https://propertypro-e6dd2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        databaseURL:
+          "https://propertypro-e6dd2-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "propertypro-e6dd2",
         storageBucket: "propertypro-e6dd2.appspot.com",
         messagingSenderId: "596423351613",
         appId: "1:596423351613:web:e5e65d072cbf6f7e633954",
-        measurementId: "G-86MKPJWQNF"
+        measurementId: "G-86MKPJWQNF",
       };
-    
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getDatabase();
-      
+
       //upload information to db
-      const upload=document.querySelector('.upload_filter-type');
-      const enterloc= document.getElementById('loc');
-      const enterbed_count= document.getElementById('bed_count');
-      const enterbalcony_count= document.getElementById('balcony_count');
-      const enterbath_count= document.getElementById('bath_count');
-      const enterfloor= document.getElementById('floor');
-      const entersize= document.getElementById('size');
-      const enterdescription= document.getElementById('description');
-      const enteraddress= document.getElementById('address');
-      const enterprice= document.getElementById('price');
-      const uploadBtn= document.getElementById('info_upload');
+      const upload = document.querySelector(".upload_filter-type");
+      const enterloc = document.getElementById("loc");
+      const enterbed_count = document.getElementById("bed_count");
+      const enterbalcony_count = document.getElementById("balcony_count");
+      const enterbath_count = document.getElementById("bath_count");
+      const enterfloor = document.getElementById("floor");
+      const entersize = document.getElementById("size");
+      const enterdescription = document.getElementById("description");
+      const enteraddress = document.getElementById("address");
+      const enterprice = document.getElementById("price");
+      const uploadBtn = document.getElementById("info_upload");
+      const uploadnum = document.getElementById('phn_num')
 
       //search infromation from db
-      const search_type=document.querySelector('.search_filter-type');
-      const search_loc= document.getElementById('location');
-      const search_bed= document.getElementById('bed');
-      const search_bath= document.getElementById('bath');
-      const search_min_size= document.getElementById('min_size');
-      const search_max_size= document.getElementById('max_size');
-      const search_min_price= document.getElementById('min_price');
-      const search_max_price= document.getElementById('max_price');
-      const search_Btn= document.getElementById('search_btn');
+      const search_type = document.querySelector(".search_filter-type");
+      const search_loc = document.getElementById("location");
+      const search_bed = document.getElementById("bed");
+      const search_bath = document.getElementById("bath");
+      const search_min_size = document.getElementById("min_size");
+      const search_max_size = document.getElementById("max_size");
+      const search_min_price = document.getElementById("min_price");
+      const search_max_price = document.getElementById("max_price");
+      const search_Btn = document.getElementById("search_btn");
 
       function insertData() {
-        set(ref(db, "property/"+enteraddress.value),{
+        set(ref(db, "property/" + enteraddress.value), {
           type: upload.value,
           location: enterloc.value,
           address: enteraddress.value,
@@ -150,51 +232,69 @@
           bath: enterbath_count.value,
           balcony: enterbalcony_count.value,
           description: enterdescription.value,
-          approval: 'pending'
+          phone_number: uploadnum.value,
+          approval: "pending",
         })
-        .then(()=>{
-          alert('Upload successful')
-        })
-        .catch((error)=>{
-          alert(error)
+          .then(() => {
+            alert("Upload successful");
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
+
+      function findData() {
+        const dbref = ref(db);
+        const results = [];
+        const matching_results = [];
+
+        get(child(dbref, "property/")).then((snapshot) => {
+          results.push(snapshot.val());
+          alert("search done");
+          // Iterate through the results array
+          results.forEach((result) => {
+            // Perform actions on each result
+            for (let i in result) {
+              if (result[i]["approval"] === "approved") {
+                if (
+                  result[i]["location"] === search_loc.value &&
+                  parseInt(result[i]["bed"]) === parseInt(search_bed.value) &&
+                  parseInt(result[i]["bath"]) === parseInt(search_bath.value) &&
+                  parseInt(result[i]["price"]) >
+                    parseInt(search_min_price.value) &&
+                  parseInt(result[i]["price"]) <
+                    parseInt(search_max_price.value) &&
+                  parseInt(result[i]["size"]) >
+                    parseInt(search_min_size.value) &&
+                  parseInt(result[i]["size"]) < parseInt(search_max_size.value)
+                ) {
+                  if (
+                    (result[i]["type"] === "rent_out" &&
+                      search_type.value === "rent") ||
+                    (result[i]["type"] === "sell" &&
+                      search_type.value === "buy")
+                  ) {
+                    matching_results.push(result[i]);
+                  }
+                }
+              }
+            }
+
+            console.log(matching_results);
+            localStorage.setItem(
+              "matching data",
+              JSON.stringify(matching_results)
+            );
+          });
         });
       }
 
-      function findData(){
-        const dbref = ref(db);
-        const results=[]
-        const matching_results=[]
-
-          get(child(dbref, "property/"))
-          .then((snapshot)=>{
-          results.push(snapshot.val());
-          alert('search done');
-        // Iterate through the results array
-        results.forEach((result) => {
-          // Perform actions on each result
-          for (let i in result){
-            if (result[i]['approval']==='approved'){
-              if (result[i]['location']===search_loc.value && parseInt(result[i]['bed'])===parseInt(search_bed.value) && parseInt(result[i]['bath'])===parseInt(search_bath.value) && parseInt(result[i]['price'])>parseInt(search_min_price.value) && parseInt(result[i]['price'])<parseInt(search_max_price.value) && parseInt(result[i]['size'])>parseInt(search_min_size.value) && parseInt(result[i]['size'])<parseInt(search_max_size.value)){
-              if ((result[i]['type']==='rent_out' && search_type.value==='rent') || (result[i]['type']==='sell' && search_type.value==='buy')){
-                matching_results.push(result[i]);
-              }
-
-            }
-          }
-        }
-
-          console.log(matching_results)
-          localStorage.setItem('matching data', JSON.stringify(matching_results));
-
-        });
-
-  });
-}
-
-      uploadBtn.addEventListener('click', insertData);
-      search_Btn.addEventListener('click', findData);
-
+      uploadBtn.addEventListener("click", insertData);
+      search_Btn.addEventListener("click", function () {
+        findData();
+        window.location.href = "./showcards.html";
+      });
     </script>
-</body>
-<script src="../Controller/home.js"></script>
+  </body>
+  <script src="../Controller/home.js"></script>
 </html>

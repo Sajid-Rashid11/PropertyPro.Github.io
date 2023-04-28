@@ -6,14 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin page</title>
     <link rel="stylesheet" href="../View/admin_style.css">
-    <link rel="icon" href="../View/logo.png" type="image/icon type">
+    <link rel="icon" href="/View/logo.png" type="image/icon type">
 
 </head>
 <body>
-    <div id="action">
-        <button>Pending</button>
-        <button>Update</button>
-    </div>
     
     <table id="myTable">
         <thead>
@@ -27,8 +23,9 @@
             <th>Bath</th>
             <th>Balcony</th>
             <th>Price</th>
+            <th>Phone Number</th>
             <th>Approval</th>
-            <th>Change Approval</th>
+            <th>Confirm Approval</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -71,28 +68,47 @@ const tbody = document.querySelector("#myTable tbody");
 get(child(dbref, "property/"))
   .then((snapshot) => {
     const data = snapshot.val();
-    for (const key in data) {
+    for (const i in data) {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${key}</td>
-        <td>${data[key].type}</td>
-        <td>${data[key].location}</td>
-        <td>${data[key].floor}</td>
-        <td>${data[key].size}</td>
-        <td>${data[key].bed}</td>
-        <td>${data[key].bath}</td>
-        <td>${data[key].balcony}</td>
-        <td>${data[key].price}</td>
-        <td>${data[key].approval}</td>
+        <td>${i}</td>
+        <td>${data[i].type}</td>
+        <td>${data[i].location}</td>
+        <td>${data[i].floor}</td>
+        <td>${data[i].size}</td>
+        <td>${data[i].bed}</td>
+        <td>${data[i].bath}</td>
+        <td>${data[i].balcony}</td>
+        <td>${data[i].price}</td>
+        <td>${data[i].phone_number}</td>
+        <td>${data[i].approval}</td>
       `;
       tbody.appendChild(row);
+      
+      if (data[i].approval==='pending'){
+        const buttonTd = document.createElement("td");
+        const btn= document.createElement('button');
+        btn.textContent = "Approve";
+        btn.addEventListener('click', function(){
+          update(ref(db, 'property/'+ i), {
+            approval: 'approved'
+          })
+          .then(()=>{
+            alert('Approval confirmed.')
+          })
+                } )
+      buttonTd.appendChild(btn);
+      
+
+      row.appendChild(buttonTd);
+      }
+      
     }
+    
   })
   .catch((error) => {
     console.error(error);
   });
-
-  
 
 
     </script>

@@ -149,7 +149,8 @@
           bed: enterbed_count.value,
           bath: enterbath_count.value,
           balcony: enterbalcony_count.value,
-          description: enterdescription.value
+          description: enterdescription.value,
+          approval: 'pending'
         })
         .then(()=>{
           alert('Upload successful')
@@ -172,13 +173,15 @@
         results.forEach((result) => {
           // Perform actions on each result
           for (let i in result){
-            if (result[i]['location']===search_loc.value && parseInt(result[i]['bed'])===parseInt(search_bed.value) && parseInt(result[i]['bath'])===parseInt(search_bath.value) && parseInt(result[i]['price'])>parseInt(search_min_price.value) && parseInt(result[i]['price'])<parseInt(search_max_price.value) && parseInt(result[i]['size'])>parseInt(search_min_size.value) && parseInt(result[i]['size'])<parseInt(search_max_size.value)){
+            if (result[i]['approval'==='approved']){
+              if (result[i]['location']===search_loc.value && parseInt(result[i]['bed'])===parseInt(search_bed.value) && parseInt(result[i]['bath'])===parseInt(search_bath.value) && parseInt(result[i]['price'])>parseInt(search_min_price.value) && parseInt(result[i]['price'])<parseInt(search_max_price.value) && parseInt(result[i]['size'])>parseInt(search_min_size.value) && parseInt(result[i]['size'])<parseInt(search_max_size.value)){
               if ((result[i]['type']==='rent_out' && search_type.value==='rent') || (result[i]['type']==='sell' && search_type.value==='buy')){
                 matching_results.push(result[i]);
               }
 
             }
           }
+        }
 
           console.log(matching_results)
         });

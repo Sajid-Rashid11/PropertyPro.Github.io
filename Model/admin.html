@@ -14,12 +14,86 @@
         <button>Pending</button>
         <button>Update</button>
     </div>
-    <div class="grid-container">
-            <div class="grid-item" onclick="location.href='https://www.google.com'"></div>
-            <div class="grid-item" onclick="location.href='https://www.yahoo.com'"></div>
-            <div class="grid-item" onclick="location.href='https://www.bing.com'"></div>
+    
+    <table id="myTable">
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Location</th>
+            <th>Floor number</th>
+            <th>Size(sq. ft)</th>
+            <th>Bed</th>
+            <th>Bath</th>
+            <th>Balcony</th>
+            <th>Price</th>
+            <th>Approval</th>
+            <th>Column 10</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      
+      
             <!-- Add more grid items as needed -->
                   
     </div>
+    <script type="module">
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
+      import { getDatabase, set, get, update, remove, ref, child } 
+      from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDErQuY9Ss7afLcjrBFdfnTc6_Zxro2FkM",
+        authDomain: "propertypro-e6dd2.firebaseapp.com",
+        databaseURL: "https://propertypro-e6dd2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "propertypro-e6dd2",
+        storageBucket: "propertypro-e6dd2.appspot.com",
+        messagingSenderId: "596423351613",
+        appId: "1:596423351613:web:e5e65d072cbf6f7e633954",
+        measurementId: "G-86MKPJWQNF"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase();
+
+      const dbref = ref(db);
+const tbody = document.querySelector("#myTable tbody");
+
+get(child(dbref, "property/"))
+  .then((snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${key}</td>
+        <td>${data[key].type}</td>
+        <td>${data[key].location}</td>
+        <td>${data[key].floor}</td>
+        <td>${data[key].size}</td>
+        <td>${data[key].bed}</td>
+        <td>${data[key].bath}</td>
+        <td>${data[key].balcony}</td>
+        <td>${data[key].price}</td>
+        <td>${data[key].approval}</td>
+      `;
+      tbody.appendChild(row);
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+
+    </script>
 </body>
+<script src="/Controller/admin.js"></script>
 </html>

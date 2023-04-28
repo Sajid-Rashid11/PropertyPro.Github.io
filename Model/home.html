@@ -128,18 +128,18 @@
       const uploadBtn= document.getElementById('info_upload');
 
       //search infromation from db
-      const search_type=document.querySelector('.search_filter-type').value;
-      const search_loc= document.getElementById('location').value;
-      const search_bed= document.getElementById('bed').value;
-      const search_bath= document.getElementById('bath').value;
-      const search_min_size= document.getElementById('min_size').value;
-      const search_max_size= document.getElementById('max_size').value;
-      const search_min_price= document.getElementById('min_price').value;
-      const search_max_price= document.getElementById('max_price').value;
+      const search_type=document.querySelector('.search_filter-type');
+      const search_loc= document.getElementById('location');
+      const search_bed= document.getElementById('bed');
+      const search_bath= document.getElementById('bath');
+      const search_min_size= document.getElementById('min_size');
+      const search_max_size= document.getElementById('max_size');
+      const search_min_price= document.getElementById('min_price');
+      const search_max_price= document.getElementById('max_price');
       const search_Btn= document.getElementById('search_btn');
 
       function insertData() {
-        set(ref(db, "property/" + enteraddress.value),{
+        set(ref(db, "property/"+enteraddress.value),{
           type: upload.value,
           location: enterloc.value,
           address: enteraddress.value,
@@ -161,11 +161,30 @@
 
       function findData(){
         const dbref = ref(db);
-        results=[]
-        data= get(child(dbref, "property/"+search_loc+search_bath+search_bed+search_type))
+        const results=[]
+        const matching_results=[]
 
-        
-      }
+          get(child(dbref, "property/"))
+          .then((snapshot)=>{
+          results.push(snapshot.val());
+          alert('search done');
+        // Iterate through the results array
+        results.forEach((result) => {
+          // Perform actions on each result
+          for (let i in result){
+            if (result[i]['location']===search_loc.value && parseInt(result[i]['bed'])===parseInt(search_bed.value) && parseInt(result[i]['bath'])===parseInt(search_bath.value) && parseInt(result[i]['price'])>parseInt(search_min_price.value) && parseInt(result[i]['price'])<parseInt(search_max_price.value) && parseInt(result[i]['size'])>parseInt(search_min_size.value) && parseInt(result[i]['size'])<parseInt(search_max_size.value)){
+              if ((result[i]['type']==='rent_out' && search_type.value==='rent') || (result[i]['type']==='sell' && search_type.value==='buy')){
+                matching_results.push(result[i]);
+              }
+
+            }
+          }
+
+          console.log(matching_results)
+        });
+
+  });
+}
 
       uploadBtn.addEventListener('click', insertData);
       search_Btn.addEventListener('click', findData);

@@ -139,7 +139,11 @@
           .then((userCredential) => {
             const user = userCredential.user;
             alert("successfully signed in!");
-            window.location.href = "home.html";
+            if (signInEmail==="admin@gmail.com"){
+              window.location.href = "admin.html";
+            } else{
+              window.location.href = "home.html";
+            }
           })
           .catch((error) => {
             const errorCode = error.code;

@@ -53,9 +53,11 @@
             <option value="buy">Buy</option>
           </select>
         </div>
+        <input type="text" id="city"  placeholder="enter city" />
         <input type="text" id="location" placeholder="Enter location" />
         <input type="number" id="bed" min="0" placeholder="No. of bedrooms" />
         <input type="number" id="bath" min="0" placeholder="No. of bathrooms" />
+        
 
         <div class="flat_size">
           <input
@@ -94,9 +96,10 @@
         <select name="type" class="upload_filter-type">
           <option value="rent_out">Rent Out</option>
           <option value="sell">Sell</option>
-        </select>
+        </select><input type="text" id="property_city" placeholder="Enter city" />
         <input type="text" id="loc" placeholder="location" />
         <input type="number" id="bed_count" placeholder="No. of bedrooms" />
+        
         <input
           type="text"
           pattern="[0-9]+"
@@ -197,6 +200,7 @@
 
       //upload information to db
       const upload = document.querySelector(".upload_filter-type");
+      const entercity = document.getElementById("property_city");
       const enterloc = document.getElementById("loc");
       const enterbed_count = document.getElementById("bed_count");
       const enterbalcony_count = document.getElementById("balcony_count");
@@ -211,6 +215,7 @@
 
       //search infromation from db
       const search_type = document.querySelector(".search_filter-type");
+      const search_city = document.getElementById("city");
       const search_loc = document.getElementById("location");
       const search_bed = document.getElementById("bed");
       const search_bath = document.getElementById("bath");
@@ -223,6 +228,7 @@
       function insertData() {
         set(ref(db, "property/" + enteraddress.value), {
           type: upload.value,
+          city: entercity.value,
           location: enterloc.value,
           address: enteraddress.value,
           floor: enterfloor.value,
@@ -259,6 +265,7 @@
               if (result[i]["approval"] === "approved") {
                 if (
                   result[i]["location"] === search_loc.value &&
+                  result[i]["city"] === search_city.value &&
                   parseInt(result[i]["bed"]) === parseInt(search_bed.value) &&
                   parseInt(result[i]["bath"]) === parseInt(search_bath.value) &&
                   parseInt(result[i]["price"]) >

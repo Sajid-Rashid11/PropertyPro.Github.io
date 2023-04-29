@@ -16,6 +16,7 @@
           <tr>
             <th>Address</th>
             <th>Type</th>
+            <th>City</th>
             <th>Location</th>
             <th>Floor number</th>
             <th>Size(sq. ft)</th>
@@ -73,6 +74,7 @@ get(child(dbref, "property/"))
       row.innerHTML = `
         <td>${i}</td>
         <td>${data[i].type}</td>
+        <td>${data[i].city}</td>
         <td>${data[i].location}</td>
         <td>${data[i].floor}</td>
         <td>${data[i].size}</td>

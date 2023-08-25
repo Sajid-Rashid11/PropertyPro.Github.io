@@ -123,7 +123,7 @@
           .then((userCredential) => {
             const user = userCredential.user;
             alert("Your account has been created!");
-            window.location.href = "home.html";
+            window.location.href = "/Model/home.html";
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -139,10 +139,10 @@
           .then((userCredential) => {
             const user = userCredential.user;
             alert("successfully signed in!");
-            if (signInEmail==="admin@gmail.com"){
-              window.location.href = "admin.html";
+            if (signInEmail==="admin@gmail.com"||"admin2@gmail.com"){
+              window.location.href = "/Model/admin.html";
             } else{
-              window.location.href = "home.html";
+              window.location.href = "/Model/home.html";
             }
           })
           .catch((error) => {
